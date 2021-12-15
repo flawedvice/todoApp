@@ -3,24 +3,37 @@
  *      - Checkbox
  *      - Label with the name of the task
  */
- function Tasks(props) {
+function Tasks(props) {
 
-     let tasks = props.tasks.map( task => {
-         <input type="checkbox" id={tasks.indexOf(task)} key={tasks.indexOf(task)}/>
-         <label for={tasks.indexOf(task)}>{task}</label>
-     });
-
-     return (
-         <div>
-            {tasks}
+    let tasks = props.tasks;
+    let taskList = tasks.map( (task) =>
+        <div className="form-group" key={tasks.indexOf(task)}>
+            <input type="checkbox" id={tasks.indexOf(task)}/>
+            <label htmlFor={tasks.indexOf(task)}>{task}</label>
         </div>
-     );
- }
+    );
+
+    console.log(taskList);
+
+    return (
+        <div>
+            {taskList}
+        </div>
+    );
+}
 
 
 /*
  *  Render Input and Submit
  */
+function CreateTask() {
+    return (
+        <form>
+            <input type="text" placeholder="add details"/>
+            <button>Add</button>
+        </form>
+    );
+}
 
 
 /*
@@ -31,3 +44,16 @@
  *
  *  Render CreateTask Component and Tasks Component
  */
+
+function ListTasks() {
+
+    return (
+        <div>
+            <CreateTask />
+            <Tasks tasks={[]}/>
+        </div>
+    );
+}
+
+
+export default ListTasks;
